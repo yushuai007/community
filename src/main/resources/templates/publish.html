@@ -50,28 +50,40 @@
         </div>
     </div>
 </nav>
+
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"/> 发现</h2>
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"/>发现</h2>
             <hr/>
-            <div class="media" th:each="question:${questions}">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-rounded" width="40px" height="40px" th:src = "${question.user.avatar_url}">
-                    </a>
+
+            <form>
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）:</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="问题标题...">
                 </div>
-                <div class="media-body">
-                    <h5 class="media-heading" th:text="${question.title}"></h5>
-                    <h6 class="media-heading" th:text="${question.description}"><br/></h6>
-                    <span class="text-desc"><span th:text="${question.user.name}"/> 发表了文章 • <span th:text="${question.comment_count}"/> 个评论 • <span th:text="${question.view_count}"/> 次浏览 • <span th:text="${#dates.format(question.gmt_create_time,'dd MMMM yyyy')}"/></span>
+                <div class="form-group">
+                    <label for="title">问题补充（必填，请参照右侧提示）:</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="title">添加标签:</label>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签，以，分割">
+                </div>
+                <button type="submit" class="btn btn-success btn-publish">发布</button>
+            </form>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>热门话题</h3>
+            <h3>问题发起指南</h3><br>
+            <h5>1、本科及以上学历，计算机相关专业，3年以上相关工作经验；<br>
+            2、编程能力扎实，熟悉Java/C++/golang中的一种，具有良好的数据结构、算法、操作系统等计算机基本知识；<br>
+            3、具有较强的学习能力，自我驱动，追求卓越；<br>
+            4、熟悉分布式系统原理，有ElasticSearch/Lucene/Solr或Hadoop/Presto/ClickHouse等大规模分布式系统开发经验者优先；<br>
+            5、有大数据或云计算相关开发经验，或搜索、监控、APM、日志分析等相关平台建设经验者优先。
+            </h5>
         </div>
     </div>
 </div>
+
 </body>
 </html>
